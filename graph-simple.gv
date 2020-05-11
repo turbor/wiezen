@@ -1,0 +1,29 @@
+# http://www.graphviz.org/content/cluster
+# https://sketchviz.com/new
+
+digraph Wiezen {
+node [shape=box]
+
+"WACHTEN_OP_SPELERS"->"DELEN"
+"DELEN"->"BIEDEN"
+"BIEDEN"->"OPBIEDEN"
+"BIEDEN"->"RETURNHAND1"[ label="iedereen past direct" ]
+"RETURNHAND1"->"CHINEES_DELEN"->"BIEDEN"
+"BIEDEN"->"ALLEEN_5_SPELEN"  [ label="Vraag en alleen voor 5 gaan" ]
+"BIEDEN"->"DELERMISERIE"  [ label="als deler miserie speelt mag hij troefkaart wisselen" ]
+"DELERMISERIE"->"SPEELSLAG"
+"OPBIEDEN"->"OPBIEDEN" [ label="tot iedereen akkoord" ]
+"ALLEEN_5_SPELEN"->"SPEELSLAG"
+"ALLEEN_5_SPELEN"->"RETURNHAND2"   [ label="Vraag en NIET alleen voor 5 gaan, deler schuift door" ]
+"RETURNHAND2"->"DELEN"
+"BIEDEN"->"SPEELSLAG"
+"OPBIEDEN"->"SPEELSLAG"
+"SPEELSLAG"->"SPEELSLAG"
+"SPEELSLAG"->"PUNTEN TELLEN"
+"PUNTEN TELLEN"->"HEFFEN"
+"HEFFEN"->"DELEN"
+
+overlap=false
+label="Wies server statediagram\nUsed as a guideline"
+fontsize=12;
+}
